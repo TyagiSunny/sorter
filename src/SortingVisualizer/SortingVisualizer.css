@@ -1,0 +1,26 @@
+.array-container{
+    /* position:absolute;
+    left: 100px; */
+    display: block;
+    margin: auto;
+}
+
+.header{
+    font-size: 2rem;
+    margin: 1rem;
+    color: white;
+    background-color:#007acc;
+    padding:1rem;
+}
+
+.buttons{
+    margin: 5px;
+}
+
+.array-bar{
+    margin: 0px 1px;
+    background-color:#007acc;
+    width: 4px;
+    display: inline-block;
+
+}
