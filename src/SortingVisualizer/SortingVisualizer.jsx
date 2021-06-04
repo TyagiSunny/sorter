@@ -24,6 +24,7 @@ export default class SortingVisualizer extends Component{
         for(let i=0;i<n;i++){
             array1.push(randomIntFromInterval(5,500));
         }
+        this.setState({array:[]});
         this.setState({array:array1});
     }
 
