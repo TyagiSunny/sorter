@@ -24,11 +24,15 @@ export default class SortingVisualizer extends Component{
         if(window.screen.width*window.devicePixelRatio>350){
            n=100;
         }else{
-            n=20;
+            n=25;
         }
+        
+        
+        
         for(let i=0;i<n;i++){
             array1.push(randomIntFromInterval(5,500));
         }
+        
         this.setState({array:array1});
     }
 
@@ -244,7 +248,7 @@ export default class SortingVisualizer extends Component{
             <div>
                 <div>
                     <div className="header">
-                        Sorting Visualiser -Sunny
+                        Sorting Visualiser- Sunny Tyagi
                     </div>
                     <div className="message">
                         {this.state.showMessage?this.state.message:""}
