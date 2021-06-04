@@ -19,12 +19,19 @@ export default class SortingVisualizer extends Component{
     }
 
     resetArray(){
+        let n;
         const array1=[];
-        let n=window.screen.height/8;
+        if(window.screen.width>window.screen.height{
+           n=window.screen.width/8;
+        }else{
+            n=window.screen.height/8;
+        }
+        
+        
         for(let i=0;i<n;i++){
             array1.push(randomIntFromInterval(5,500));
         }
-        this.setState({array:[]});
+        
         this.setState({array:array1});
     }
 
