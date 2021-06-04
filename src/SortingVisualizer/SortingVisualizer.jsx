@@ -21,7 +21,7 @@ export default class SortingVisualizer extends Component{
     resetArray(){
         let n;
         const array1=[];
-        if(window.screen.width>window.screen.height{
+        if(window.screen.width<window.screen.height{
            n=window.screen.width/8;
         }else{
             n=window.screen.height/8;
