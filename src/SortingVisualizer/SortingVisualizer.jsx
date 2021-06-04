@@ -21,11 +21,12 @@ export default class SortingVisualizer extends Component{
     resetArray(){
         let n;
         const array1=[];
-        if(window.screen.width<window.screen.height){
-           n=window.screen.width/8;
+        if(window.screen.width*window.devicePixelRatio>350){
+           n=100;
         }else{
-            n=window.screen.height/8;
+            n=25;
         }
+        
         
         
         for(let i=0;i<n;i++){
