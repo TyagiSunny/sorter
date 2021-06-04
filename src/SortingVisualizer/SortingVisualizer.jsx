@@ -20,7 +20,7 @@ export default class SortingVisualizer extends Component{
 
     resetArray(){
         const array1=[];
-        let n=window.screen.width*window.devicePixelRatio/8;
+        let n=window.screen.width/8;
         for(let i=0;i<n;i++){
             array1.push(randomIntFromInterval(5,500));
         }
