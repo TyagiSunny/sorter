@@ -248,7 +248,7 @@ export default class SortingVisualizer extends Component{
             <div>
                 <div>
                     <div className="header">
-                        Sorting Visualiser
+                        Sorting Visualiser- Sunny Tyagi
                     </div>
                     <div className="message">
                         {this.state.showMessage?this.state.message:""}
