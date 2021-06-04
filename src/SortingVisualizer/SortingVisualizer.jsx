@@ -19,8 +19,13 @@ export default class SortingVisualizer extends Component{
     }
 
     resetArray(){
+        let n;
         const array1=[];
-        let n=window.screen.width/8;
+        if(window.screen.width*window.devicePixelRatio>350){
+           n=100;
+        }else{
+            n=20;
+        }
         for(let i=0;i<n;i++){
             array1.push(randomIntFromInterval(5,500));
         }
@@ -239,7 +244,7 @@ export default class SortingVisualizer extends Component{
             <div>
                 <div>
                     <div className="header">
-                        Sorting Visualiser
+                        Sorting Visualiser -Sunny
                     </div>
                     <div className="message">
                         {this.state.showMessage?this.state.message:""}
