@@ -19,12 +19,17 @@ export default class SortingVisualizer extends Component{
     }
 
     resetArray(){
-        const array1=[];
-        let n=window.screen.width/8;
-        for(let i=0;i<n;i++){
-            array1.push(randomIntFromInterval(5,500));
+        if(this.state.message===""){
+            const array1=[];
+            let n=window.screen.width/8;
+            for(let i=0;i<n;i++){
+                array1.push(randomIntFromInterval(5,500));
+            }
+            this.setState({array:array1});
+        }else{
+            this.setState({showMessage:true})
+            
         }
-        this.setState({array:array1});
     }
 
     mergeSort(){
@@ -78,50 +83,65 @@ export default class SortingVisualizer extends Component{
         // let arr2=quickSort([...this.state.array]);
 
         // console.log(isArrayEqual(arr1,arr2));
-        if(this.state.message===""){
-            this.setState({message:"quickSort is already running. please wait...."})
+        let arrayBars=document.getElementsByClassName('array-bar');
+        let height=[];
+        for(let i=0;i<arrayBars.length;i++){
+            height.push(parseInt(arrayBars[i].style.height.match(/(\d+)/)[0]));
+        }
+        let n=height.length;
+        // console.log("sort",arraySortedOrNot(height,n));
+        if(arraySortedOrNot(height,n)===0){ //Array is not sorted
+            // this.setState({message:"Array is not sorted"});
+            if(this.state.message===""){
+                this.setState({message:"quickSort is already running. please wait...."})
 
-            const animations=quickSort([...this.state.array]);
-            for(let i=0;i<animations.length;i++){
+                const animations=quickSort([...this.state.array]);
+                for(let i=0;i<animations.length;i++){
 
-                let arrayBars=document.getElementsByClassName('array-bar');
-                let [color,barOne,barTwo]=animations[i];
-                let barOneStyle=arrayBars[barOne].style;
-                let barTwoStyle=arrayBars[barTwo].style;
+                    let arrayBars=document.getElementsByClassName('array-bar');
+                    let [color,barOne,barTwo]=animations[i];
+                    let barOneStyle=arrayBars[barOne].style;
+                    let barTwoStyle=arrayBars[barTwo].style;
 
-                let isColorChange=color!=='none';
-                
-                
-                if(isColorChange){
+                    let isColorChange=color!=='none';
                     
-                    // const color=i%3===0?'red':'#007acc';
-                    setTimeout(() => {
-                        barOneStyle.backgroundColor=color;
-                        barTwoStyle.backgroundColor=color;
-                        if(i===animations.length-1){
-                            this.setState({message:""});
-                            this.setState({showMessage:false});
-                        }
-                    }, i*5);
-                }else{
-                    setTimeout(() => {
+                    
+                    if(isColorChange){
                         
-                        
-                        let tmp=barOneStyle.height;
-                        barOneStyle.height=barTwoStyle.height;
-                        barTwoStyle.height=tmp;
-                        if(i===animations.length-1){
-                            this.setState({message:""});
-                            this.setState({showMessage:false});
-                        }
-                        // barStyle.height=`${newBarHeight}px`;
-                    }, i*5);
+                        // const color=i%3===0?'red':'#007acc';
+                        setTimeout(() => {
+                            barOneStyle.backgroundColor=color;
+                            barTwoStyle.backgroundColor=color;
+                            if(i===animations.length-1){
+                                this.setState({message:""});
+                                this.setState({showMessage:false});
+                            }
+                        }, i*5);
+                    }else{
+                        setTimeout(() => {
+                            
+                            
+                            let tmp=barOneStyle.height;
+                            barOneStyle.height=barTwoStyle.height;
+                            barTwoStyle.height=tmp;
+                            if(i===animations.length-1){
+                                this.setState({message:""});
+                                this.setState({showMessage:false});
+                            }
+                            // barStyle.height=`${newBarHeight}px`;
+                        }, i*5);
+                    }
+
                 }
 
+            }else{
+                this.setState({showMessage:true});
             }
-
         }else{
-            this.setState({showMessage:true});
+            this.setState({showMessage:true,message:"Array is Already sorted, you can generate new array..."});
+            setTimeout(() => {
+                this.setState({showMessage:false,message:""})
+            }, 2000);
         }
     }
 
@@ -130,51 +150,71 @@ export default class SortingVisualizer extends Component{
         // let arr2=bubbleSort([...this.state.array]);
 
         // console.log(isArrayEqual(arr1,arr2));
-        if(this.state.message===""){
-            this.setState({message:"bubbleSort is already running. please wait...."})
-
-            const animations=bubbleSort([...this.state.array]);
-            console.log(animations);
-            for(let i=0;i<animations.length;i++){
-
-                let arrayBars=document.getElementsByClassName('array-bar');
-                let [color,barOne,barTwo]=animations[i];
-                let barOneStyle=arrayBars[barOne].style;
-                let barTwoStyle=arrayBars[barTwo].style;
-
-                let isColorChange=color!=='none';
-                
-                
-                if(isColorChange){
+        let arrayBars=document.getElementsByClassName('array-bar');
+        let height=[];
+        for(let i=0;i<arrayBars.length;i++){
+            height.push(parseInt(arrayBars[i].style.height.match(/(\d+)/)[0]));
+        }
+        let n=height.length;
+        // console.log("sort",arraySortedOrNot(height,n));
+        if(arraySortedOrNot(height,n)===0){ //Array is not sorted
+            // this.setState({message:"Array is not sorted"});
+            if(this.state.message===""){
+                this.setState({message:"bubbleSort is already running. please wait...."})
+    
+                const animations=bubbleSort([...this.state.array]);
+                // console.log(animations);
+                for(let i=0;i<animations.length;i++){
+    
+                    // let arrayBars=document.getElementsByClassName('array-bar');
+                    let [color,barOne,barTwo]=animations[i];
+                    let barOneStyle=arrayBars[barOne].style;
+                    let barTwoStyle=arrayBars[barTwo].style;
+    
+                    let isColorChange=color!=='none';
                     
-                    // const color=i%3===0?'red':'#007acc';
-                    setTimeout(() => {
-                        barOneStyle.backgroundColor=color;
-                        barTwoStyle.backgroundColor=color;
-                        if(i===animations.length-1){
-                            this.setState({message:""});
-                            this.setState({showMessage:false});
-                        }
-                    }, i*1);
-                }else{
-                    setTimeout(() => {
+                    
+                    if(isColorChange){
                         
-                        
-                        let tmp=barOneStyle.height;
-                        barOneStyle.height=barTwoStyle.height;
-                        barTwoStyle.height=tmp;
-                        if(i===animations.length-1){
-                            this.setState({message:""});
-                            this.setState({showMessage:false});
-                        }
-                        // barStyle.height=`${newBarHeight}px`;
-                    }, i*1);
+                        // const color=i%3===0?'red':'#007acc';
+                        setTimeout(() => {
+                            barOneStyle.backgroundColor=color;
+                            barTwoStyle.backgroundColor=color;
+                            if(i===animations.length-1){
+                                this.setState({message:""});
+                                this.setState({showMessage:false});
+                            }
+                        }, i*1);
+                    }else{
+                        setTimeout(() => {
+                            
+                            
+                            let tmp=barOneStyle.height;
+                            barOneStyle.height=barTwoStyle.height;
+                            barTwoStyle.height=tmp;
+                            if(i===animations.length-1){
+                                this.setState({message:""});
+                                this.setState({showMessage:false});
+                            }
+                            // barStyle.height=`${newBarHeight}px`;
+                        }, i*1);
+                    }
+    
                 }
-
+            }else{
+                this.setState({showMessage:true});
             }
         }else{
-            this.setState({showMessage:true});
+            this.setState({showMessage:true,message:"Array is Already sorted, you can generate new array..."});
+            setTimeout(() => {
+                this.setState({showMessage:false,message:""})
+            }, 2000);
         }
+        // console.log("h",height);
+
+
+
+        
     }
 
     insertionSort(){
@@ -272,7 +312,24 @@ export default class SortingVisualizer extends Component{
 function randomIntFromInterval(min, max) {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
-  }
+}
+
+function arraySortedOrNot(arr, n)
+{
+     
+    // Array has one or no element or the
+    // rest are already checked and approved.
+    if (n == 1 || n == 0)
+        return 1;
+ 
+    // Unsorted pair found (Equal values allowed)
+    if (arr[n - 1] < arr[n - 2])
+        return 0;
+ 
+    // Last pair was sorted
+    // Keep on checking
+    return arraySortedOrNot(arr, n - 1);
+}
 
 function isArrayEqual(left,right) {
     if(left.length!==right.length) return false
