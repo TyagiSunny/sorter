@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import SortingVisualizer from './SortingVisualizer/SortingVisualizer';
+import Sorter from './Sorter/Sorter';
 
 function App() {
   return (
     <div className="App">
-      <SortingVisualizer></SortingVisualizer>
+      <Sorter></Sorter>
     </div>
   );
 }
