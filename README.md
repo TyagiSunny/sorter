@@ -9,3 +9,5 @@ It is a UI based implementaion of different sorting algorithms
 
 ## Live Impletation
 https://github.com/TyagiSunny/sorter
+
+Thanks to Clement sir for helping me with this project.
