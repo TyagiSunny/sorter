@@ -8,5 +8,5 @@ It is a UI based implementaion of different sorting algorithms
 ### Quick Sort
 
 ## Live Impletation
-https://github.com/TyagiSunny/sorter
+https://tyagisunny.github.io/sorter/
 Interact and enjoy:)
